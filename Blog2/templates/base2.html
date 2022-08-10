@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><!--<![endif]-->
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Name of your web site">
+		<meta name="author" content="Marketify">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!-- <title>Arlo | Home</title> -->
+		<title>{% block title %} {% endblock %}</title>
+		<!-- STYLES -->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/n_plugins.css') }}" />
+		<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/n_colors.css') }}" />-->
+		<!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/n_darkMode.css') }}" /> 可不引入-->
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename= 'css/n_style.css') }}" />
+		<link rel="shortcut icon" href="{{ url_for('static', filename='img/1.svg')}}">
+    	<link rel="icon" href="{{ url_for('static', filename='img/1.svg') }}" type="image/x-icon">
+		<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:200i,300,300i,400,400i,500,500i,600,700,700i,800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	</head>
+	<!-- /PRELOADER --><!-- WRAPPER ALL -->
+	<body class="arlo_tm_all_wrap" data-magic-cursor="" data-color="crimson">
+		<div class="arlo_tm_preloader">
+			<div class="spinner_wrap">
+				<div class="spinner"></div>
+			</div>
+		</div>
+		<!-- 移动端栏 --><!-- 顶栏 -->
+		<div class="arlo_tm_mobile_menu">
+			<div class="mobile_menu_inner">
+				<div class="container">
+					<div class="mobile_in">
+						<div class="logo"><a href="{{ url_for('index')}}"><img src="./static/img/Adark.png" alt="" /></a></div>
+						<div class="my_trigger">
+							<div class="hamburger hamburger--collapse-r">
+								<div class="hamburger-box">
+									<div class="hamburger-inner"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="dropdown">
+				<div class="container">
+					<div class="dropdown_inner">
+						<ul class="anchor_nav">
+							<li><a href="{{url_for('visual')}}">疫情可视化</a></li>
+							<li><a href="{{url_for('toolsbox')}}">百宝箱</a></li>
+							<li><a href="{{url_for('message')}}">留言墙</a></li>
+							<li><a href="{{url_for('about')}}">关于我</a></li>
+							<li><a href="{{url_for('login')}}">文件上传</a></li>
+							<li><a href="{{url_for('music')}}">休闲一下</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 移动端栏 --><!-- 顶栏 -->
+		<div class="arlo_tm_topbar">
+			<div class="container">
+				<div class="topbar_inner">
+					<div class="logo">
+						<a href="{{ url_for('index')}}"><img class="light" src="./static/img/Alight.png" alt="" /></a>
+						<a href="{{ url_for('index')}}"><img class="dark" src="./static/img/Adark.png" alt="" /></a>
+					</div>
+					<div class="menu">
+						<ul class="anchor_nav">
+							<li><a href="{{url_for('visual')}}">疫情可视化</a></li>
+							<li><a href="{{url_for('toolsbox')}}">百宝箱</a></li>
+							<li><a href="{{url_for('message')}}">留言墙</a></li>
+							<li><a href="{{url_for('about')}}">关于我</a></li>
+							<li><a href="{{url_for('login')}}">管理员</a></li>
+							<li><a href="{{url_for('music')}}">休闲一下</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        {% block content %} {% endblock %}
+
+		<!-- 版权栏 -->
+		<div style="text-align:center">
+			<ul class="list-inline text-center"><hr>
+				<li class="list-inline-item">
+					<img src="/static/img/公众号.jpg">
+				</li>
+				<br>
+				<li class="list-inline-item">
+					<div style="font-size:18px">
+						<h6>注：本网站背景与头像绘画作品均归<a href="#">Apr.L</a>所有，尊重原创，请勿商用。
+							<br>Copyright @ 2022 <a href="#">回到古代见李白</a></h6>
+						<br>
+					</div>
+				</li>
+			</ul>
+		</div>
+	<!-- 脚本 -->
+	<script src="./static/js/n_jquery.js"></script>
+	<![endif]-->
+	<script src="./static/js/n_plugins.js"></script>
+	<script src="./static/js/n_init.js"></script>
+	<script async defer src="http://www.google.cn/maps/api/js?key=AIzaSyA5bpEs3xlB8vhxNFErwoo3MXR64uavf6Y&callback=initMap"></script>
+	<!-- /脚本 -->
+	</body>
+</html>

@@ -1,0 +1,88 @@
+{% extends 'base1.html' %}
+
+{% block title %} Pie｜Music {% endblock %}
+
+{% block content %}
+<div>
+<div id="world"></div>
+<div id="instructions">
+    <div  hidden id="value_div">{% for i in music_list %}{{ i +','}}{% endfor %}</div>
+    <div><audio id = "audio" src="/static/music/{{ music_list[0] }}.mp3" preload="auto"></audio>
+        <div style="text-align:center">
+            <p id = "music_name" style="font-size: 40px">{{ music_list[0] }}</p>
+            <button id="btn-play" onclick="play_music()">点击播放</button>
+            <button id="btn-stop" onclick="pause_music()">点击暂停</button>
+            <button id="btn-pre" onclick="top_music()">切上一首</button>
+            <button id="btn-next" onclick="next_music()">切下一首</button><br>
+            <!--
+            <span></span><br>
+            <span>你知道吗 每一个珍藏在心底的秘密</span><br>
+            <span>都会变成一颗闪亮的星</span>
+            -->
+        </div>
+    </div>
+</div>
+<script src="./static/js/lionthree.min.js"></script>
+<script src="./static/js/lionOrbitControls.js"></script>
+<script src="./static/js/lionscript.js"></script>
+</div>
+
+<script language="javascript">
+    var value_music = document.getElementById("value_div").innerHTML;//获取隐藏div标签中的值
+    var x = value_music.split(",");//形成js中数组的形式
+    var audio = document.getElementById("audio");
+    var music = new Array(x.length-1);//减1是为了去掉数组中文字为空的。
+    music = x;
+	var num = 0;
+	var music_name = document.getElementById("music_name");
+
+    {#播放音乐#}
+	function play_music() {
+         if(audio.paused){
+				audio.play();
+			}
+    }
+
+    {#暂停音乐#}
+    function pause_music() {
+         if(audio.played){
+				audio.pause();
+			}
+    }
+
+    {#上一首音乐#}
+    function top_music() {
+         num = (num +(x.length-2))% (x.length-1);
+         if(typeof(music[num])==="undefined" || music[num]===""){
+             audio.src = "/static/music/" + music[1] + ".mp3";
+             music_name.innerHTML = music[1];
+             audio.play();
+         }else {
+             audio.src = "/static/music/" + music[num] + ".mp3";
+             music_name.innerHTML = music[num];
+             audio.play();
+         }
+    }
+
+    {#下一首音乐#}
+    function next_music() {
+        num = (num +(x.length+2))% (x.length+1);
+         if(typeof(music[num])==="undefined" || music[num]===""){
+         audio.src ="/static/music/" + music[2]+".mp3";
+         music_name.innerHTML = music[2];
+         audio.play();
+         }else {
+          audio.src ="/static/music/" + music[num]+".mp3";
+         music_name.innerHTML = music[num];
+         audio.play();
+         }
+    }
+
+      <!--自动播放下一首-->
+    audio.addEventListener('ended', function () {
+                     next_music();
+    }, false);
+</script>
+
+{% endblock %}
+

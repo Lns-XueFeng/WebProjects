@@ -1,0 +1,98 @@
+{% extends 'base2.html' %}
+
+{% block title %} Pie｜About {% endblock %}
+
+{% block content %}
+<!-- /TOPBAR --><!-- HERO -->
+<div class="arlo_tm_hero" id="home">
+	<div class="background">
+		<div class="image" data-img-url="/static/img/B钢铁侠.jpg"></div>
+		<div class="overlay"></div>
+	</div>
+
+	<div class="content">
+		<hr>
+		<div class="name_holder">
+			<h3>回到古代见 <span>李白</span></h3>
+			<h6>&nbsp;</h6>
+			<h4 class="tit">一个自学编程的笨小孩</h4>
+			<h4 class="tit">笨小孩有句口头禅</h4>
+		</div>
+		<div class="text_typing">
+			<p>&nbsp;<span class="arlo_tm_animation_text_word"></span>&nbsp;</p>
+		</div>
+			<br>
+			<h4 class="tit">笨小孩有些理想主义,就像是期待与你的相遇</h4>
+		<hr>
+	</div>
+	<!-- mao点 -->
+	<div class="arlo_tm_arrow_wrap bounce anchor">
+		<a href="#services"><i class="xcon-angle-double-down"></i></a>
+	</div>
+</div>
+<!-- /HERO -->
+
+<div class="arlo_tm_section" id="services">
+	<div class="arlo_tm_services">
+		<div class="container">
+			<div class="arlo_tm_main_title" style="text-align:center">
+				<h3>杂记列表</h3>
+				<span>建议使用电脑浏览器浏览下面的文章以拥有最佳体验</span>
+			</div>
+			<hr>
+			<div class="service_inner">
+				<ul>
+					<li class="wow fadeInLeft" data-wow-duration="1.5s">
+						<div class="inner" style="text-align:center">
+							<img class="svg" src="static/img/1.svg" alt="" />
+							<a href="{{url_for('displayMD',name='PythonChat')}}"><h3>缘起:Python</h3></a>
+							<span>笨小孩与Python是如何相遇，笨小孩为何如此执着于Python，笨小孩到底有多热衷于Python？</span>
+						</div>
+					</li>
+					<li class="wow fadeInLeft" data-wow-duration="1.5s">
+						<div class="inner" style="text-align:center">
+							<img class="svg" src="static/img/1.svg" alt="" />
+							<a href="{{url_for('displayMD',name='Codeboy')}}"><h3>缘起:Spider</h3></a>
+						</div>
+					</li>
+					<li class="wow fadeInLeft" data-wow-duration="1.5s">
+						<div class="inner" style="text-align:center">
+							<img class="svg" src="static/img/1.svg" alt="" />
+							<a href="{{url_for('displayMD',name='Codeboy')}}"><h3>缘起:DataAnlysis</h3></a>
+						</div>
+					</li>
+					<li class="wow fadeInLeft" data-wow-duration="1.5s">
+						<div class="inner" style="text-align:center">
+							<img class="svg" src="static/img/1.svg" alt="" />
+							<a href="{{url_for('displayMD',name='Codeboy')}}"><h3>缘起:Algorithm</h3></a>
+						</div>
+					</li>
+					<li class="wow fadeInLeft" data-wow-duration="1.5s">
+						<div class="inner" style="text-align:center">
+							<img class="svg" src="static/img/1.svg" alt="" />
+							<a href="{{url_for('displayMD',name='Codeboy')}}"><h3>经久:杂记</h3></a>
+						</div>
+					</li>
+					<li class="wow fadeInLeft" data-wow-duration="1.5s">
+						<div class="inner" style="text-align:center">
+							<img class="svg" src="static/img/1.svg" alt="" />
+							<a href="{{url_for('displayMD',name='Codeboy')}}"><h3>缘起:DevlopBlog</h3></a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<hr>
+			<div class="arlo_tm_main_title" style="text-align:center">
+				<span>建议使用电脑浏览器浏览下面的文章以拥有最佳体验</span>
+				<h3>立刻行动</h3>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	p {font-size:19px;}
+	.tit{color:#FFFFFF}
+</style>
+
+{% endblock %}

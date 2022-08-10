@@ -1,0 +1,92 @@
+1.运行网站:
+    set/export FLASK_APP=myblog
+    set/export FLASK_ENV=devolopment/production
+    flask run
+
+2.最小的web程序:
+    from flask import Flask
+    app = Flask(__name__)
+
+    @app.route('/')
+    def index():
+        return "hello world"
+
+3.路由:
+    在2中，@app.route('/')就是来完成路由的！
+    例如上述程序启动后，在浏览器中输入http://127.0.0.1:5000/就会发起get请求
+      flask就会使用index函数进行处理，原因是@app.route('/')会接收这个网址的请求
+      并最终返回字符串hello world
+
+    路由有两种接收方式，methods=["GET","POST"]
+    get请求和post请求:
+        get请求就是我们在输入网址时发起的请求
+        post请求就类似与提交表单
+
+    路由变量规则:
+        @app.route("/user/<id>")
+        #接收任何正整数
+        @app.route("/user/<int:id>") #系统自带的int转换器
+        #接收任何不包含斜杠的文本
+        @app.route("/user/<string:id>") #系统自带的string转换器
+        #接收正浮点数
+        @app.route("/user/<float:id>") #系统自带的float转换器
+        #path接收包含斜杠的文本
+        @app.route("/user/<path:id>") #系统自带的path转换器
+
+4.自定义转换器:
+    from werkzeug.routing import BaseConverter
+    from flask import Flask
+
+5.form表单:
+
+6.request对象:
+    from flask import Flask,render_template,request
+     利用 5 6 给我的博客做一个登陆页面，登陆后才可发布和删除文章
+
+7.重定向:
+    from flask import Flask,render_template,request,redirect,url_for
+
+    app = Flask(__name__)
+
+    @app.route('/')
+    def index():
+        return redirect("https://www.baidu.com")
+
+    @app.route('/hi')
+    def hi():
+        return "hi"
+
+    @app.route('/hello')
+    def hello():
+        return redirect(url_for('hi')) #url_for方法可以关联处理网页的网址
+
+8.返回前端json数据:
+    from flask import Flask，make_response,json,jsonify
+
+    app = Flask(__name__)
+    app.config['JSON_AS_ASCII'] = False #jsonify(data)
+
+    @app.route('/')
+    def index():
+        data = {
+            'name':'lxh',
+            'age':'21',
+        }
+        #response = make_response(json.dumps(data,ensure_ascii=False))
+        #response.mimetype = 'application/json'
+        #return response
+
+        return jsonify(data) # app.config['JSON_AS_ASCII'] = False
+
+9.abort在网页当中抛出异常:
+    abort(404)
+
+10.模版:
+    jinja2其内置的特殊的语法：
+        {{ }} 里面可以写变量，表达式，列表，计算，
+
+        {% if name %}
+          <h1>Hello {{ name }}!</h1>
+        {% else %}
+          <h1>Hello, World!</h1>
+        {% endif %}

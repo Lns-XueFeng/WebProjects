@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html body {
+            /* background-color: rgb(250, 250, 220); */
+            background-color: whitesmoke;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        .head {
+            width: 100%;
+            height: 150px;
+            background-color: #DC143C;
+            /* 让head始终贴住上端 */
+            position: sticky;
+            top: 0px;
+            /* CSS渐变 */
+            transition: background-color 1s;
+            /* 设置head在最上面 */
+            /* z-index: 1; */
+
+            opacity: 0.8;
+        }
+
+        /* 父级盒子 */
+        .container {
+            margin:0 auto;
+            width: 85%;
+            /* 高度由子盒子撑开 */
+            height: auto;
+        }
+
+        /* 解决父级盒子因为子盒子浮动而失去高度 */
+        .container:before,
+        .container:after {
+            content: "";
+            display: table;
+        }
+
+        .container:after {
+            clear: both;
+        }
+
+        /* 子级盒子 */
+        .left-con {
+            float: left;
+            width: 65%;
+            /* 根据右边三个盒子计算所得 */
+            /* min-height: 640px;    */
+            height: auto;
+            /* background-color: #fff;     */
+            position: relative;
+            left: 4%;
+            top: 10px;
+
+            /* border: black 5px solid; */
+            padding: 10px;
+            box-sizing: border-box;
+
+            opacity: 0.9;
+        }
+
+        .left-con .ul1 .li1 {
+            /* list-style: none; */
+            width: 100%;
+            height: 200px;
+            background-color: white;
+
+            margin-top: 10px;
+            /* border: black 1px solid; */
+            padding: 10px;
+            box-sizing: border-box;
+            box-sizing: content-box;
+        }
+
+        /* 子级盒子 */
+        .right-con {
+            float: right;
+            width: 25%;
+            height: auto;
+            background-color: #fff;
+            position: relative;
+            right: 4%;
+            top: 20px;
+        }
+
+        /* 个人信息 */
+        .top-me {
+            float: left;
+            width: 90%;
+            min-height: 200px;
+            height: 500px;
+            background-color: #fff;   
+            
+            /* border: black 5px solid; */
+            padding: 10px;
+            box-sizing: border-box;
+
+            opacity: 0.9;
+
+            overflow: hidden;
+        }
+
+        .htitle {
+            display: block;
+            /* text-decoration: none; */
+            text-align: center;
+            position: relative; 
+            top: 150px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 50px;
+        }
+
+        /* top-me盒子里的 */
+        .top-me .ul2 .li2 h3 {
+            display: block;
+            color: rgb(233, 97, 97);
+            margin: 5px;
+            text-align: center;
+        }
+
+        .top-me .ul2 .li2 img {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+        }
+
+        .top-me .ul2 .li2 p {
+            display: block;
+            font-size: 16px;
+            margin-top: 5px;
+            color: rgb(233, 97, 97);
+        }
+
+        .top-me .ul2 .li2 .link1,.link2 {
+            display: block;
+            margin: 5px;
+            /* text-decoration: none; */
+            text-align: center;
+            color: rgb(233, 97, 97);
+        }
+        
+        /* link文档 */
+        .my-doc {
+            float: left;
+            width: 100%;
+            /* min-height: 200px; */
+            height: auto;
+            background-color: #fff;
+            position: absolute;
+            /* 根据实际高度计算 */
+            top: 520px;
+
+            /* border: black 5px solid; */
+            padding: 10px;
+            box-sizing: border-box;
+
+            opacity: 0.9;
+        }
+
+        .my-doc a {
+            display: block;
+            text-align: center;
+            width: auto;
+            height: 35px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            box-sizing: content-box;
+            /* background-color: rgb(233, 97, 97); */
+        }
+
+        .link-passage {
+            float: left;
+            width: 100%;
+            min-height: 200px;
+            height: auto;
+            background-color: #fff;
+            position: absolute;
+            top: 740px;
+
+            /* border: lightsteelblue 5px solid; */
+            padding: 10px;
+            box-sizing: border-box;
+
+            opacity: 0.9;
+        }
+
+        .link-passage a {
+            display: block;
+            text-align: center;
+            width: auto;
+            height: 35px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            box-sizing: content-box;
+            /* background-color: rgb(233, 97, 97); */
+        }
+
+        .top-me .ul2 .li2 {
+            /* list-style: none; */
+            width: 100%;
+            height: 50px;
+            background-color: white;
+            padding: 10px;
+            box-sizing: border-box;
+            box-sizing: content-box;
+        }
+
+        .sky {
+            height: 350px;
+            background: #007fd5;
+            position: relative;
+            overflow: hidden;
+            -webkit-animation: sky_background 50s ease-out infinite;
+            -moz-animation: sky_background 50s ease-out infinite;
+            -o-animation: sky_background 50s ease-out infinite;
+            animation: sky_background 50s ease-out infinite;
+            -webkit-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .clouds_one {
+            background: url("static/css/cloud_one.png");
+            background-position: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 300%;
+            -webkit-animation: cloud_one 50s linear infinite;
+            -moz-animation: cloud_one 50s linear infinite;
+            -o-animation: cloud_one 50s linear infinite;
+            animation: cloud_one 50s linear infinite;
+            -webkit-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .clouds_two {
+            background: url("static/css/cloud_two.png");
+            background-position: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 300%;
+            -webkit-animation: cloud_two 75s linear infinite;
+            -moz-animation: cloud_two 75s linear infinite;
+            -o-animation: cloud_two 75s linear infinite;
+            animation: cloud_two 75s linear infinite;
+            -webkit-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .clouds_three {
+            background: url("static/css/cloud_three.png");
+            background-position: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 300%;
+            -webkit-animation: cloud_three 100s linear infinite;
+            -moz-animation: cloud_three 100s linear infinite;
+            -o-animation: cloud_three 100s linear infinite;
+            animation: cloud_three 100s linear infinite;
+            -webkit-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        @-webkit-keyframes sky_background {
+        0% {
+            background: #007fd5;
+            color: #007fd5
+        }
+        50% {
+            background: #000;
+            color: #a3d9ff
+        }
+        100% {
+            background: #007fd5;
+            color: #007fd5
+        }
+        }
+        @-moz-keyframes sky_background {
+        0% {
+            background: #007fd5;
+            color: #007fd5
+        }
+        50% {
+            background: #000;
+            color: #a3d9ff
+        }
+        100% {
+            background: #007fd5;
+            color: #007fd5
+        }
+        }
+        @keyframes sky_background {
+        0% {
+            background: #007fd5;
+            color: #007fd5
+        }
+        50% {
+            background: #000;
+            color: #a3d9ff
+        }
+        100% {
+            background: #007fd5;
+            color: #007fd5
+        }
+        }
+
+        @-webkit-keyframes cloud_one {
+        0% {
+            left: 0
+        }
+        100% {
+            left: -200%
+        }
+        }
+        @-moz-keyframes cloud_one {
+        0% {
+            left: 0
+        }
+        100% {
+            left: -200%
+        }
+        }
+        @keyframes cloud_one {
+        0% {
+            left: 0
+        }
+        100% {
+            left: -200%
+        }
+        }
+
+        @-webkit-keyframes cloud_two {
+        0% {
+            left: 0
+        }
+        100% {
+            left: -200%
+        }
+        }
+        @-moz-keyframes cloud_two {
+        0% {
+            left: 0
+        }
+        100% {
+            left: -200%
+        }
+        }
+        @keyframes cloud_two {
+        0% {
+            left: 0
+        }
+        100% {
+            left: -200%
+        }
+        }
+
+        @-webkit-keyframes cloud_three {
+        0% {
+            left: 0
+        }
+        100% {
+            left: -200%
+        }
+        }
+        @-moz-keyframes cloud_three {
+        0% {
+            left: 0
+        }
+        100% {
+            left: -200%
+        }
+        }
+        @keyframes cloud_three {
+        0% {
+            left: 0
+        }
+        100% {
+            left: -200%
+        }
+        }  
+
+        .bottom #return {
+            display: none;
+            width: 50px;
+            height: 50px;
+            background-color: lightblue;
+            position: fixed;
+            bottom: 10px;
+            right: 3%;
+        }
+    </style>
+</head>
+<body>
+    <div class="sky">
+        <div class="clouds_one"></div>
+        <div class="clouds_two"></div>
+        <div class="clouds_three"></div>
+        <!-- <a class="htitle" href="#">欢迎来到回到古代见李白的个人网站</a> -->
+    </div>       
+
+    <div class="container">
+        <div class="left-con">
+            <ul class="ul1">
+                <li class="li1" style="margin-top: 0px;">
+                    <h2>代码改变世界</h2>
+                    <span>
+                        ...
+                    </span>
+                </li>
+                <li class="li1">
+                    <h2>代码改变世界</h2>
+                    <span>
+                        ...
+                    </span>
+                </li>
+                <li class="li1">
+                    <h2>代码改变世界</h2>
+                    <span>
+                        ...
+                    </span>
+                </li>
+                <li class="li1">
+                    <h2>代码改变世界</h2>
+                    <span>
+                        ...
+                    </span>
+                </li>
+                <li class="li1">
+                    <h2>代码改变世界</h2>
+                    <span>
+                        ...
+                    </span>
+                </li>
+                <li class="li1">
+                    <h2>代码改变世界</h2>
+                    <span>
+                        ...
+                    </span>
+                </li>
+                <li class="li1">
+                    <h2>代码改变世界</h2>
+                    <span>
+                        ...
+                    </span>
+                </li>
+                <li class="li1">
+                    <h2>代码改变世界</h2>
+                    <span>
+                        ...
+                    </span>
+                </li>
+                <li class="li1">
+                    <h2>代码改变世界</h2>
+                    <span>
+                        ...
+                    </span>
+                </li>
+                <li class="li1">
+                    <h2>代码改变世界</h2>
+                    <span>
+                        ...
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="right-con">
+            <div class="top-me">
+                <ul class="ul2">
+                    <li class="li2" style="margin-top: 0px;">
+                        <img src="static/img/head.jpg" alt="加载失败">
+                        <h3>回到古代见李白</h3>
+                        <h3>代码改变世界 艺术就是爆炸</h3>
+                        <h3>大二在读 弹药工程</h3><br><hr>
+                        <p style="text-align: center;">创建本站点的初衷</p>
+                        <p style="text-align: center;">记录自己自学Python过程中的所思所想所得</p>
+                        <p style="text-align: center;">主要内容为Python基础, 爬虫, Web开发与算法等</p>
+                        <p style="text-align: center;">本站点前端HTML-CSS-JavaScript</p>
+                        <p style="text-align: center;">本站点后端Python-flask 数据库flask-Mysql</p><br><hr><br>
+                        <div class="link1">
+                            <a href="#">Github</a>
+                            <a href="#">| 公众号</a>
+                        </div>
+                        <div class="link2">
+                            <a href="#">&nbsp&nbsp&nbsp邮箱</a>
+                            <a href="#">| BiliBli</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="my-doc">
+                <a href="#">Python基础知识笔记</a>
+                <a href="#">Python爬虫知识笔记</a>
+                <a href="#">Python Web前端笔记</a>
+                <a href="#">编程之外的随记日记</a>
+            </div>
+            <div class="link-passage">
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+                <a href="#">公众号文章</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <input type="button" name="返回顶部" id="return" value="return">
+    </div>
+
+    <script>
+        // 返回顶部
+        var turn = document.querySelector('#return');
+
+        window.onscroll = function(){
+            turn.style.display = "block";
+
+            if (window.scrollY == 0){
+                turn.style.display = "none";
+            }
+        }
+
+        turn.addEventListener("click", function(){
+            var timer = setInterval(function(){
+                document.documentElement.scrollTop -= 50;
+                // 如果到顶部了就停止Interval
+                if (document.documentElement.scrollTop < 1){
+                    // 执行设置表关
+                    clearInterval(timer)
+                }
+            })
+        })
+    </script>
+
+    <script>
+    
+        !function(){
+        
+        function n(n,e,t){
+        
+        return n.getAttribute(e)||t
+        
+        }
+        
+        function e(n){
+        
+        return document.getElementsByTagName(n)
+        
+        }
+        
+        function t(){
+        
+        var t=e("script"),o=t.length,i=t[o-1];
+        
+        return{
+        
+        l:o,z:n(i,"zIndex",-1),o:n(i,"opacity",.5),c:n(i,"color","0,0,0"),n:n(i,"count",99)
+        
+        }
+        
+        }
+        
+        function o(){
+        
+        a=m.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,
+        
+        c=m.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight
+        
+        }
+        
+        function i(){
+        
+        r.clearRect(0,0,a,c);
+        
+        var n,e,t,o,m,l;
+        
+        s.forEach(function(i,x){
+        
+        for(i.x+=i.xa,i.y+=i.ya,i.xa*=i.x>a||i.x<0?-1:1,i.ya*=i.y>c||i.y<0?-1:1,r.fillRect(i.x-.5,i.y-.5,1,1),e=x+1;e<u.length;e++)n=u[e],
+        
+        null!==n.x&&null!==n.y&&(o=i.x-n.x,m=i.y-n.y,
+        
+        l=o*o+m*m,l<n.max&&(n===y&&l>=n.max/2&&(i.x-=.03*o,i.y-=.03*m),
+        
+        t=(n.max-l)/n.max,r.beginPath(),r.lineWidth=t/2,r.strokeStyle="rgba("+d.c+","+(t+.2)+")",r.moveTo(i.x,i.y),r.lineTo(n.x,n.y),r.stroke()))
+        
+        }),
+        
+        x(i)
+        
+        }
+        
+        var a,c,u,m=document.createElement("canvas"),
+        
+        d=t(),l="c_n"+d.l,r=m.getContext("2d"),
+        
+        x=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||
+        
+        function(n){
+        
+        window.setTimeout(n,1e3/45)
+        
+        },
+        
+        w=Math.random,y={x:null,y:null,max:2e4};m.id=l,m.style.cssText="position:fixed;top:0;left:0;z-index:"+d.z+";opacity:"+d.o,e("body")[0].appendChild(m),o(),window.onresize=o,
+        
+        window.onmousemove=function(n){
+        
+        n=n||window.event,y.x=n.clientX,y.y=n.clientY
+        
+        },
+        
+        window.onmouseout=function(){
+        
+        y.x=null,y.y=null
+        
+        };
+        
+        for(var s=[],f=0;d.n>f;f++){
+        
+        var h=w()*a,g=w()*c,v=2*w()-1,p=2*w()-1;s.push({x:h,y:g,xa:v,ya:p,max:6e3})
+        
+        }
+        
+        u=s.concat([y]),
+        
+        setTimeout(function(){i()},100)
+        
+        }();
+    </script>
+</body>
+</html>

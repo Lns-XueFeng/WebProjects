@@ -1,0 +1,70 @@
+ <html lang="zh-cn">
+	<head>
+		<title> Pie｜Md </title>
+		<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+		<link href="{{url_for('static',filename='css/display1.css')}}" rel="stylesheet">
+		<link href="{{url_for('static',filename='css/display2.css')}}" rel="stylesheet" type="text/css" />
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	</head>
+	<body>
+		<div class="right" style="margin-left:40px;width:1000px"> {{ content }} </div>
+		<p style="text-align:right"></p>
+		<div style="text-align:center">Copyright @ 2022 <a href="#">回到古代见李白</a></div>
+	</body>
+
+	{# 屏蔽复制操作 #}
+ 	<script>
+		document.oncopy = function(event) {
+			if (window.event) {
+				event = window.event;
+			}
+			try {
+				var the = event.srcElement;
+				if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+					return false;
+				}
+				return true;
+			} catch (e) {
+				return false;
+			}
+		}
+
+	  setTimeout(function() {
+		if ($('#menu').length) {
+		  return;
+		}
+		var leftWidth = 250;
+		var hList = $('h1,h2,h3,h4,h5,h6')
+		var hListDomeString = '';
+		var blankDom = '<span style="width: 20px;" ></span>';
+		var blankDomMap = {
+		  'H1': 1,
+		  'H2': 2,
+		  'H3': 3,
+		  'H4': 4,
+		  'H5': 5,
+		  'H6': 6,
+		}
+		for (var i = 0; i < hList.length; i++) {
+		  var h = hList[i];
+		  var tagName = h.tagName;
+		  var innerText = h.innerText;
+
+		  hListDomeString += '<div>' +
+		  '<div style="width: '+ 10*blankDomMap[tagName] +'px;display: inline-block" ></div>' +
+		  '<a href="#' + h.id + '" style="" >' + innerText + '</a></div>'
+		}
+
+		$('body').html(
+		'<div id="menu" style="display: flex; overflow: hidden;">' + '<div style="width: ' + leftWidth + 'px;flex-shrink: 0;">' +
+		  '<div style="position:fixed; top:0;left:0;width:'+leftWidth+'px;height: 100vh;overflow:auto;font-size:14px;">'
+		   + '<h3 style="margin-left:10px;">^_^笔记文档目录^_^</h3>' + hListDomeString + '</div>' + '</div>' + '<div style="width: 4px; flex-shrink: 0; background: #efefef;"></div>' +
+			'<div style="flex: 1;">' + $('body').html() + '</div>' + '</div>'
+		)
+	  }, 500)
+
+
+	</script>
+
+</html>
+

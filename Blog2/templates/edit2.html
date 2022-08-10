@@ -1,0 +1,32 @@
+{% extends 'base1.html' %}
+
+{% block title %} Pie｜Edit {% endblock %}
+
+{% block content %}
+<!-- SERVICES -->
+<div class="arlo_tm_section" id="services">
+	<div class="arlo_tm_services">
+		<div class="container">
+			<div class="arlo_tm_main_title" style="text-align:center">
+				<div class="warpper" style="width: zuto; margin: auto">
+                    <h1>&nbsp</h1>
+                    <h1>title：时间 body：句子</h1>
+                    <form method="post">
+                        {{ form.csrf_token }}
+                        {{ form.title.label }}<br>
+                        {{ form.title }}<br><br>
+                        {{ form.body.label }}<br>
+                        {{ form.body }}
+                        <br>
+                        {{ form.submit }}
+                    </form>
+                        <hr>
+                </div>
+                {{ ckeditor.load() }}
+                {{ ckeditor.config(name='body') }}
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
