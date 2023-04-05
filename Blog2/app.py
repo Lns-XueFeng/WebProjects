@@ -125,11 +125,11 @@ def login():
         user_info = request.form.to_dict()
         username = user_info['u']
         password = user_info['p']
-        if username == 'upload' and password == '***********':
+        if username == 'upload' and password == '123456789':
             return redirect(url_for('upload'))
-        elif username == 'delete' and password == '***********':
+        elif username == 'delete' and password == '123456789':
             return redirect(url_for('delete'))
-        elif username == 'english' and password == '***********':
+        elif username == 'english' and password == '123456789':
             return redirect(url_for('english'))
         else:
             return redirect(url_for('login'))
